@@ -16,18 +16,25 @@ using System.Windows.Shapes;
 namespace lr7-8.Windows
 {
     /// <summary>
-    /// Interaction logic for ShowWeatherWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ShowWeatherWindow : Window
+    public partial class MainWindow : Window
     {
-        public ShowWeatherWindow()
+        public MainWindow()
         {
             InitializeComponent();
-			LoadData();
         }
-		private void LoadData() =>
-			new ModelEF().Prognosis.ToList().ForEach(item =>
-			wrapPanelWeather.Children.Add(new PrognosisWeather(item)));
-		private void buttonBack_Click(object sender, RoutedEventArgs e) => Close();
-    }
+
+		private void buttonAddWeather_Click(object sender, RoutedEventArgs e)
+		{
+			AddWeatherWindow addWeatherWindow = new AddWeatherWindow();
+			addWeatherWindow.ShowDialog();
+		}
+
+		private void buttonShowWeather_Click(object sender, RoutedEventArgs e)
+		{
+			ShowWeatherWindow showweather = new ShowWeatherWindow(); 
+			showweather.ShowDialog();
+    	}
+	}
 }
